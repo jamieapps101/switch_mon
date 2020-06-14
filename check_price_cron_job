@@ -1,0 +1,1 @@
+* * * * * /node_source/check_price.sh >> /var/log/cron.log 2>&1
