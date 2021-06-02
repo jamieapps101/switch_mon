@@ -7,22 +7,18 @@ const sendmail = require('sendmail')();
 // scheduling module
 var schedule = require('node-schedule');
 
-
+// fill this in, but do not commit it
 const send = require('gmail-send')({
-    user: 'jamienasnotifications1@gmail.com',
-    pass: 'xm8p9z0p9z20',
-    to:   'oabwebster@gmail.com',
-    subject: 'Switch Notifications',
+    user: '',
+    pass: '',
+    to:   '',
+    subject: '',
   });
 
 
-// console.log("setup scraping function");
 async function get_switch_price() {
-//    console.log("get_switch_price");
    let price = null; 
-//    const browser = await puppeteer.launch();
    const browser = await puppeteer.launch({args: ['--no-sandbox']});
-//    const browser = await puppeteer.launch({headless:false});
    const page = await browser.newPage();
    await page.goto("https://www.amazon.co.uk/", {waitUntil: "networkidle0"});
    await page.evaluate('document.querySelector("#twotabsearchtextbox").value = "nintendo switch"')
@@ -33,7 +29,6 @@ async function get_switch_price() {
         page.waitForNavigation({ waitUntil: 'networkidle2' }),
     ]);
     let a_elements = await page.$$(".a-link-normal");
-    // console.log(a_elements);
     if(a_elements == null) {
         return null;
     }
@@ -44,7 +39,7 @@ async function get_switch_price() {
         let element = a_elements[a];
         let first_result = await element.getProperty("href");
         href_value = await first_result.jsonValue();
-        // console.log(href_value);
+
         if(href_value.substring(0,trigger_string.length) == trigger_string){
             console.log(trigger_string)
             console.log(trigger_string.length)
