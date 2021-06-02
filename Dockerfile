@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:20.04
 
 RUN apt-get update && apt-get -y install cron curl
 
@@ -25,6 +25,7 @@ RUN apt install -y gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2
 
 
 COPY node_source /node_source
+RUN chmod 777 /node_source
 WORKDIR /node_source
 # RUN npm install
 RUN su - nonroot -c "cd /node_source; npm install"

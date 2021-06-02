@@ -11,7 +11,7 @@ var schedule = require('node-schedule');
 const send = require('gmail-send')({
     user: 'jamienasnotifications1@gmail.com',
     pass: 'xm8p9z0p9z20',
-    to:   'jamieapps101@gmail.com',
+    to:   'oabwebster@gmail.com',
     subject: 'Switch Notifications',
   });
 
